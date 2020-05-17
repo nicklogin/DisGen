@@ -1,4 +1,4 @@
-# DistGen
+# DisGen
 A generator of options for multiple choice questions derived from REALEC texts
 
 Currently three types of errors are supported:
