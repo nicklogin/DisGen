@@ -43,7 +43,11 @@ def index():
 ## API for JSON i/o
 @app.route('/api', methods=['POST'])
 def service():
-    pass
+    if request.method == 'POST':
+        if 'contexts' in request.form:
+            df = pd.DataFrame(request.form['contexts'], index_col='id')
+            df = distractor_generator.get_distractors(df)
+            return df.to_json(orient='records')
 
 if __name__ == '__main__':
     app.run()
