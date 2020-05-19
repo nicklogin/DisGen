@@ -35,16 +35,16 @@ def invert_seq_batch(batch):
 ## Taken from https://gist.github.com/nissan/ccb0553edb6abafd20c3dec34ee8099d with modification
 class DataFrameDataset(Dataset):
     def __init__(self, df, question_field, answer_field, right_answer_col):
-        print(right_answer_col)
-        df.to_excel("Test.xlsx")
+        # print(right_answer_col)
+        # df.to_excel("Test.xlsx")
         fields = [('context_id', RawField()), ('left', question_field), ('right', question_field), ('right_item', answer_field)]
         examples = []
         for i, row in df.iterrows():
             left = row.left
             right = row.right
             right_answer = row[right_answer_col]
-            if right_answer not in answer_field.vocab.stoi:
-              print(right_answer)
+            # if right_answer not in answer_field.vocab.stoi:
+            #   print(right_answer)
             examples.append(Example.fromlist([i, left, right, right_answer], fields))
 
         super().__init__(examples, fields)

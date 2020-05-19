@@ -45,7 +45,7 @@ def index():
 def service():
     if request.method == 'POST':
         if 'contexts' in request.form:
-            df = pd.DataFrame(request.form['contexts'], index_col='id')
+            df = pd.DataFrame(request.form['contexts']).set_index('id')
             df = distractor_generator.get_distractors(df)
             return df.to_json(orient='records')
 

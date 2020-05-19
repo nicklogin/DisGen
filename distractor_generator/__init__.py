@@ -9,7 +9,7 @@ from datetime import datetime
 def get_distractors(df):
     result_dfs = []
     d = datetime.now()
-    for error_type, (Model_class, model_init_params) in distractor_models.items():
+    for error_type, (Model_class, model_init_params) in distractor_models:
         needed_subset = df[df['Error type'] == error_type]
         model = Model_class(**model_init_params)
         new_df = model.get_distractors(needed_subset)
